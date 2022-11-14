@@ -1,0 +1,133 @@
+<!-- Victoria Rocha de Oliveira - 202011072 -->
+<!-- Leticia Pereira            - 202010144 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<script>
+    function calcularIMC() {	
+        let sexo = document.querySelector("#sexo").value;
+        let altura = document.querySelector("#altura").value;
+        let peso = document.querySelector("#peso").value;
+        let result = document.querySelector("#result");
+
+        if (sexo === "") {
+            resultmsg.innerHTML = "Informe seu sexo.";
+            return;
+        }
+        if (altura === "" || isNaN(altura)) {
+            resultmsg.innerHTML = "Informe uma altura maior que 0 em metros.";
+            return;
+        }
+        if (peso === "" || isNaN(peso)) {
+            resultmsg.innerHTML = "Informe o peso maior que 0";
+            return;
+        }
+
+        altura = parseFloat(altura);
+        peso = parseFloat(peso);
+
+	    let imc = peso / (altura * altura);
+        resultimc.innerHTML = imc;
+	
+            if (sexo === "F") {
+                if (imc < 19.1) {
+                    resultmsg.innerHTML = "Abaixo do peso";
+                } else {
+                    if (imc < 25.8) {
+                        resultmsg.innerHTML = "No peso normal";
+                    } else {
+                        if (imc < 27.3) {
+                            resultmsg.innerHTML = "Marginalmente acima do peso";
+                        } else {
+                            if (imc < 32.3) {
+                                resultmsg.innerHTML = "Acima do peso ideal";
+                            } else {
+                                resultmsg.innerHTML = "Se encontra em estado de obesidade";
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                    if (imc < 20.7) {
+                        resultmsg.innerHTML = "Abaixo do peso";
+                    } else {
+                        if (imc < 26.4) {
+                            resresultmsgult.innerHTML = "No peso normal";
+                        } else {
+                            if (imc < 27.8) {
+                                resultmsg.innerHTML = "Marginalmente acima do peso";
+                            } else {
+                                if (imc < 31.1) {
+                                    resultmsg.innerHTML = "Acima do peso ideal";
+                                } else {
+                                    resultmsg.innerHTML = "Se encontra em estado de obesidade";
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+</script>
+    <link rel="stylesheet" href="style.css">
+    <title>Calculando o seu IMC</title>
+    
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <form id="form-imc" action="#">
+            <h1 id="titulo">
+                    &nbsp
+                    Calculando o seu IMC 
+                           
+            </h1> 
+
+            <fieldset>
+                <div class="form-group">
+                    <label for="sexo">
+                        <h5>Selecione o seu sexo:<h5>
+                    </label>
+                    <select id="sexo" required>
+                        <option value=""></option>
+                        <option value="F" font-size: o>Feminino</option>
+                        <option value="M">Masculino</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="altura">
+                        <h5>Coloque sua altura:<h5>
+                    </label>
+                    <input type="number" id="altura" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <h5>Coloque o seu peso:<h5>
+                    </label>
+                    <input type="number" id="peso" step="0.001" required>
+                </div>
+                <div class="form-action-group">
+                    <button type="button" id="btn-calc" onclick="calcularIMC()">Calcular</button>
+                </div>
+            </fieldset>
+        </form>
+        <div class="result-container">
+            <h2>Resultado:</h2>
+            <div  id="resultmsg">___________________</div>
+        </div>
+        <div class="result-container">
+            <h2>IMC:</h2>
+            <div  id="resultimc">_______________</div>
+        </div>
+        
+    </div>
+</body>
+  
+</html>
